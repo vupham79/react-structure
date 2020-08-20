@@ -1,0 +1,91 @@
+@media screen and (max-width: 320px) {
+    .navbar-brand-minimized, .navbar-brand-full {
+        margin-left: -170px;
+        width:100px;
+        height: 30px;
+        object-fit: scale-down;
+    }  
+    .branch-name {
+        display: none !important;
+    }
+    .branch {
+        padding-left: 0 !important;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 400px) {
+    .navbar-brand-minimized, .navbar-brand-full {
+        margin-left: -180px;
+        width: 140px;
+        height: 42px;
+        object-fit: scale-down;
+    }   
+    .branch-name {
+        display: none !important;
+    }
+    .branch {
+        padding-left: 0 !important;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 600px) {
+    .navbar-brand-minimized, .navbar-brand-full {
+        margin-left: -210px;
+        width: 150px;
+        height: 45px;
+    }    
+    .branch {
+        padding-left: 0 !important;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 991px) {
+    .navbar-brand-minimized, .navbar-brand-full {
+        margin-left: -560px;
+        width: 150px;
+        height: 45px;
+    }
+    .branch {
+        padding-left: 0 !important;
+    } 
+}
+
+@media screen and (min-width: 992px) {
+    .main-brand {
+        min-width: 150px;
+    }
+    .navbar-brand-minimized {
+        margin-left: -40px;
+        width: 150px;
+        height: 45px;
+    }
+    .navbar-brand-full {
+        margin-left: 60px;
+        width: 150px;
+        height: 45px;
+    }
+    .branch {
+        padding-left: 0 !important;
+    }
+}
+
+.ps__rail-y {
+    left: 0px !important;
+}
+
+@media (min-width: 992px) {
+    .sidebar-minimized .sidebar .nav > .nav-dropdown > .nav-dropdown-items {
+        display: none;
+        max-width: 200px !important;
+        max-height: 200px !important;
+        overflow: auto !important;
+        background: #2f353a;
+    }
+    .sidebar-minimized .sidebar .nav-dropdown-items .nav-item .nav-link {
+        white-space: normal;
+    }
+    .sidebar-minimized .sidebar .nav-link .nav-icon {
+        height:30px;
+        margin-top: 2px;
+    }
+}

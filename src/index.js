@@ -1,17 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import { translationMessages } from './i18n'
+import configureStore from './store'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import LanguageProvider from './containers/LanguageProvider'
+import { ConnectedRouter } from 'connected-react-router/immutable'
+import history from './utils/history'
+
+// Create redux store with history
+const initialState = {}
+const { store, persistor } = configureStore(initialState, history)
+const MOUNT_NODE = document.getElementById('root') //eslint-disable-line
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <LanguageProvider messages={translationMessages}>
+        <ConnectedRouter history={history}>
+          <App />
+        </ConnectedRouter>
+      </LanguageProvider>
+    </PersistGate>
+  </Provider>,
+  MOUNT_NODE,
+)

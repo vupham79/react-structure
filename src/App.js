@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Suspense } from 'react'
+import Spinners from './components/Spinners'
+import { Switch, Route } from 'react-router-dom'
+const Page404 = React.lazy(() => import('./containers/Page404'))
+const DefaultLayout = React.lazy(() => import('./containers/DefaultLayout'))
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    const { intl } = this.props
+    return (
+      <div>
+        <Suspense fallback={<Spinners pulse />}>
+          <Switch>
+            <Route exact path="/404" name="Page 404" render={(props) => <Page404 {...props} />} />
+            <Route
+              path="/"
+              name="DefaultLayout"
+              render={(props) => <DefaultLayout {...props} intl={intl} />}
+            />
+          </Switch>
+        </Suspense>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
